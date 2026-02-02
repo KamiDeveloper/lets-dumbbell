@@ -1,5 +1,7 @@
 import Link from 'next/link'
 import type { Metadata } from 'next'
+import { Github } from 'lucide-react'
+import { Footer } from '@/components/layout'
 
 export const metadata: Metadata = {
   title: 'Workshop | Project Dumbbell',
@@ -80,7 +82,18 @@ export default function WorkshopPage() {
         <h1 className="font-display text-2xl md:text-3xl font-bold text-concrete-light tracking-tight">
           THE WORKSHOP
         </h1>
-        <div className="w-20" />
+        <div className="flex items-center gap-4">
+          <Link
+            href="https://github.com/KamiDeveloper/lets-dumbbell"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-concrete-mid hover:text-concrete-light transition-colors"
+          >
+            <Github className="w-6 h-6" />
+          </Link>
+          <div className="w-px h-6 bg-concrete-mid/30" />
+          <div className="w-12" />
+        </div>
       </header>
 
       {/* Tool Grid */}
@@ -136,6 +149,8 @@ export default function WorkshopPage() {
           ))}
         </div>
       </main>
+
+      <Footer />
     </div>
   )
 }

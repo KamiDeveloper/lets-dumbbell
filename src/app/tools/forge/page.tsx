@@ -8,6 +8,7 @@ import { useLanguageStore } from '@/lib/stores/language-store'
 import { generateDumbbellPDF } from '@/lib/pdf'
 import { BrutalistButton, NoiseOverlay } from '@/components/ui'
 import { motion, AnimatePresence } from 'framer-motion'
+import { Github } from 'lucide-react'
 
 const Scene = dynamic(() => import('@/components/3d/Scene'), {
   ssr: false,
@@ -117,7 +118,18 @@ export default function ForgePage() {
         <h1 className="font-display text-xl md:text-2xl font-bold text-concrete-light tracking-tight">
           {t.forge.title}
         </h1>
-        <div className="w-20" />
+        <div className="flex items-center gap-4">
+          <Link
+            href="https://github.com/KamiDeveloper/lets-dumbbell"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-concrete-mid hover:text-concrete-light transition-colors"
+          >
+            <Github className="w-5 h-5" />
+          </Link>
+          <div className="w-px h-4 bg-concrete-mid/30" />
+          <div className="w-8" /> {/* Spacer for symmetry with the home link */}
+        </div>
       </header>
 
       {/* Main Content */}

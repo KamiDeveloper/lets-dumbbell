@@ -1,26 +1,226 @@
 @import "tailwindcss";
 
+/* Project Dumbbell - Brutalist Design System */
+
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  /* Primary Neutrals (Concrete) */
+  --concrete-dark: #2f2f2f;
+  --concrete-light: #efefef;
+  --concrete-mid: #6a6a6a;
+
+  /* Accent System */
+  --accent-steel: #8a8a8a;
+  --accent-rust: #b8860b;
+  --accent-forge: #ff4500;
+  --accent-iron: #4a4a4a;
+
+  /* Semantic */
+  --success: #2d5016;
+  --error: #8b0000;
+  --warning: #b8860b;
+
+  /* Backgrounds */
+  --background: var(--concrete-dark);
+  --foreground: var(--concrete-light);
 }
 
 @theme inline {
+  /* Colors */
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --color-concrete-dark: var(--concrete-dark);
+  --color-concrete-light: var(--concrete-light);
+  --color-concrete-mid: var(--concrete-mid);
+  --color-accent-steel: var(--accent-steel);
+  --color-accent-rust: var(--accent-rust);
+  --color-accent-forge: var(--accent-forge);
+  --color-accent-iron: var(--accent-iron);
+  --color-success: var(--success);
+  --color-error: var(--error);
+  --color-warning: var(--warning);
+
+  /* Typography */
+  --font-display: "Space Grotesk", system-ui, sans-serif;
+  --font-body: "Inter", system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", monospace;
+
+  /* Breakpoints (8pt grid) */
+  --breakpoint-xs: 375px;
+  --breakpoint-sm: 640px;
+  --breakpoint-md: 768px;
+  --breakpoint-lg: 1024px;
+  --breakpoint-xl: 1440px;
+  --breakpoint-2xl: 1920px;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
-}
-
+/* Base Styles */
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-body);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+::-webkit-scrollbar{
+  display: none;
+}
+
+/* Industrial Typography */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: var(--font-display);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+}
+
+/* Monospace for measurements */
+.font-measurements {
+  font-family: var(--font-mono);
+  font-weight: 500;
+}
+
+/* Noise Grain Overlay */
+.noise-overlay {
+  position: absolute;
+  inset: 0;
+  opacity: 0.02;
+  mix-blend-mode: overlay;
+  pointer-events: none;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+}
+
+/* Brutalist Button Base */
+.btn-brutalist {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem 2rem;
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 0.875rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  transition: all 150ms ease;
+  cursor: pointer;
+}
+
+.btn-brutalist-primary {
+  background-color: var(--accent-forge);
+  color: var(--concrete-light);
+  border: 3px solid var(--concrete-dark);
+}
+
+.btn-brutalist-primary:hover {
+  transform: translateY(2px);
+  box-shadow: inset 0 -4px 0 rgba(0, 0, 0, 0.3);
+}
+
+.btn-brutalist-secondary {
+  background-color: transparent;
+  color: var(--concrete-light);
+  border: 2px solid var(--concrete-light);
+}
+
+.btn-brutalist-secondary:hover {
+  background-color: var(--concrete-dark);
+}
+
+/* ASCII Divider */
+.divider-ascii {
+  width: 16rem;
+  height: 1px;
+  background-color: var(--concrete-mid);
+}
+
+/* Tool Card Styles */
+.tool-card {
+  aspect-ratio: 1;
+  background: linear-gradient(
+    145deg,
+    var(--concrete-dark) 0%,
+    var(--accent-iron) 100%
+  );
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  transition: all 200ms ease;
+}
+
+.tool-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.4);
+}
+
+.tool-card:active {
+  transform: scale(0.98);
+}
+
+/* Scrollbar Styling */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--concrete-dark);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--concrete-mid);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--accent-steel);
+}
+
+/* Scroll Indicator - Brutalista */
+.scroll-indicator {
+  position: absolute;
+  bottom: 2rem;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  user-select: none;
+}
+
+.scroll-indicator-text {
+  font-family: var(--font-display);
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--accent-forge);
+}
+
+.scroll-indicator-arrow {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  animation: scrollBounce 1.5s ease-in-out infinite;
+}
+
+.scroll-indicator-arrow svg {
+  width: 1.5rem;
+  height: 1.5rem;
+  stroke: var(--accent-forge);
+  stroke-width: 2;
+  fill: none;
+}
+
+@keyframes scrollBounce {
+  0%, 100% {
+    opacity: 0.6;
+    transform: translateY(0);
+  }
+  50% {
+    opacity: 1;
+    transform: translateY(8px);
+  }
 }

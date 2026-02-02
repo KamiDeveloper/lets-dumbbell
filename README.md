@@ -58,7 +58,7 @@ src/
 ├── app/              # Next.js App Router (Forge & Workshop pages)
 ├── components/       
 │   ├── 3d/           # R3F Scenes and Dumbbell models
-│   ├── layout/       # Landing page sections (Hero, Philosophy)
+│   ├── layout/       # Landing page sections (Hero, Footer)
 │   └── ui/           # Brutalist UI components (Buttons, Overlays)
 ├── lib/
 │   ├── calculations/ # Hexagonal prism and mortar math engine

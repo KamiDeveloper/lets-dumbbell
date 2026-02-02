@@ -462,7 +462,7 @@ function drawProjectInfoPage(doc: jsPDF, spec: DumbbellSpec, projectName: string
   doc.rect(0, A4_HEIGHT - 25, A4_WIDTH, 25, 'F')
   doc.setFontSize(8)
   doc.setTextColor(239, 239, 239)
-  doc.text(`${t.page} 1 | projectdumbbell.app`, A4_WIDTH / 2, A4_HEIGHT - 10, { align: 'center' })
+  doc.text(`${t.page} 1 | lets-dumbbell.vercel.app`, A4_WIDTH / 2, A4_HEIGHT - 10, { align: 'center' })
 }
 
 /**
@@ -487,7 +487,7 @@ function drawCuttingPageHeader(doc: jsPDF, title: string, pageNum: number, total
   doc.rect(0, A4_HEIGHT - 25, A4_WIDTH, 25, 'F')
   doc.setFontSize(8)
   doc.setTextColor(239, 239, 239)
-  doc.text(`${t.page} ${pageNum} / ${totalPages} | projectdumbbell.app`, A4_WIDTH / 2, A4_HEIGHT - 10, { align: 'center' })
+  doc.text(`${t.page} ${pageNum} / ${totalPages} | lets-dumbbell.vercel.app`, A4_WIDTH / 2, A4_HEIGHT - 10, { align: 'center' })
 }
 
 /**
